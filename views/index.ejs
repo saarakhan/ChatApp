@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chats</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="delete.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <h3>Group Chats</h3>
+        <div class="btn-container">
+            <form action="/chats/new" method="get">
+                <button class="btn">New Chat</button>
+            </form>
+        </div>
+        <% for (let chat of chats) { %>
+            <div class="chat">
+                <div class="avatar">
+                    <%= chat.from.charAt(0).toUpperCase() %>
+                </div>
+                <div class="chat-content">
+                    <div class="chat-header">
+                        <p>From: <i>
+                                <%= chat.from %>
+                            </i></p>
+                        <span>
+                            <%= chat.created_at.toString().split(" ")[4] %>
+                            <br>
+                            <%= chat.created_at.toString().split(" ").slice(0, 4).join(" ") %>
+                        </span>
+                    </div>
+                    <div class=" msgBox">
+                                <p>
+                                    <%= chat.message %>
+                                </p>
+                                <div class="edition">
+                                    <form action="/chats/<%= chat._id %>/edit" method="GET">
+                                        <button class="btn">Edit</button>
+                                    </form>
+                                    <form action="/chats/<%= chat._id %>?_method=DELETE" method="POST"
+                                        class="delete-form">
+                                        <button class="btn deleteBtn">Delete</button>
+                                    </form>
+                                </div>
+                    </div>
+                    <p>Received by: <%= chat.to %>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <% } %>
+
+    </div>
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <p>Are you sure you want to delete?</p>
+            <button class="confirm-btn" id="confirmBtn">Yes</button>
+            <button class="cancel-btn" id="cancelBtn">No</button>
+        </div>
+    </div>
+
+    <script src="delete.js"></script>
+</body>
+
+</html>

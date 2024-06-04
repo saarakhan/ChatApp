@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Chat</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 320px;
+            /* Increased width for a bit more spacing */
+            text-align: center;
+        }
+
+        h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            /* Larger font size for heading */
+        }
+
+        form {
+            background-color: #f9f9f9;
+            /* Lighter background color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 300px;
+            /* Limit form width for better readability */
+            margin: 0 auto;
+            /* Center form horizontally */
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 22px);
+            /* Adjusted width to account for padding and border */
+            padding: 10px;
+            margin-bottom: 15px;
+            /* Increased margin bottom for better spacing */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea {
+            height: 120px;
+            /* Slightly increased height for textarea */
+            resize: vertical;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #007BFF;
+            /* Highlight border color on focus */
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            /* Increased padding for button */
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            /* Darker shade on hover */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>New chat</h3>
+        <form action="/chats" , method="POST">
+            <input type="text" placeholder="Your name" name="from">
+            <textarea placeholder="Enter your message..." name="message"></textarea>
+            <input type="text" placeholder="Receiver's name" name="to">
+            <button>Create Chat</button>
+        </form>
+    </div>
+</body>
+
+</html>

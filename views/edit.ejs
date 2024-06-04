@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            resize: vertical;
+            font-size: 16px;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            align-self: flex-end;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Edit your chat , id : <%= chat._id%>
+        </h3>
+        <p>This Chat was sent from <%= chat.from %> to <%= chat.to %>
+        </p>
+
+        <form method="POST" action="/chats/<%= chat._id%>?_method=PUT">
+            <textarea name="message" id=""> <%= chat.message %></textarea>
+            <button class="btn">Edit</button>
+        </form>
+    </div>
+</body>
+
+</html>
